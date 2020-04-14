@@ -6,12 +6,27 @@ using System.Threading.Tasks;
 
 namespace ShopIndie.Models
 {
+    public enum ThemeName
+    {
+        Tech,
+        Audio,
+        Stationery,
+        Sleep,
+        Bottles,
+        LunchBoxes,
+        Time,
+        Wallets,
+        Homeware,
+        Luggage,
+        Headware,
+        Footwear
+    }
     public class Theme
     {
         // Primary Key
-
+        
         // Properties
-        public string ThemeName { get; set; }
+        public ThemeName? ThemeName { get; set; }
         // Foreign Key
 
         // Navigational Properties

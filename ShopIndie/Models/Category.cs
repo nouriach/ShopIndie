@@ -7,7 +7,25 @@ namespace ShopIndie.Models
 {
     public enum CategoryName
     {
-        Tech, Audio, Stationery, Sleep, Wallets
+        PhoneCases,
+        Charging,
+        PowerBanks,
+        WirelessChargers,
+        AppleAccessories,
+        Keyboards,
+        Audio,
+        Notebooks,
+        Stationery,
+        Sleep,
+        WaterBottles,
+        LunchBoxes,
+        Clocks,
+        Watches,
+        Wallets,
+        Kitchenware,
+        Backpacks,
+        Headwear,
+        Footwear
     }
     public class Category
     {
