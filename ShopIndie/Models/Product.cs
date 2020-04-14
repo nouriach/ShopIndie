@@ -9,10 +9,25 @@ namespace ShopIndie.Models
 {
     public class Product
     {
-        public int Id { get; set; }
+
+        // Primary Key
+        public int ProductID { get; set; }
+
+        // Properties
         public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
+
+        // Foreign Key
+
+        // Navigational Properties
+        public Theme Theme { get; set; }
+        public ICollection<ProductCategory> ProductCategories { get; set; }
+
     }
 }
+
         // add to view model later
 
         //[Range(1, 100)]
