@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopIndie.Data;
 
 namespace ShopIndie.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200327114805_Update-DbContext")]
+    partial class UpdateDbContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,9 +31,14 @@ namespace ShopIndie.Migrations
                     b.Property<string>("CategoryName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductCategory");
                 });
 
             modelBuilder.Entity("ShopIndie.Models.Product", b =>
@@ -52,29 +59,7 @@ namespace ShopIndie.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("ShopIndie.Models.ProductCategory", b =>
-                {
-                    b.Property<int>("CategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CategoryId1")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoryId");
-
-                    b.HasIndex("CategoryId1");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductCategories");
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("ShopIndie.Models.ProductType", b =>
@@ -97,19 +82,11 @@ namespace ShopIndie.Migrations
                     b.ToTable("ProductType");
                 });
 
-            modelBuilder.Entity("ShopIndie.Models.ProductCategory", b =>
+            modelBuilder.Entity("ShopIndie.Models.Category", b =>
                 {
-                    b.HasOne("ShopIndie.Models.Category", "Category")
-                        .WithMany("ProductCategories")
-                        .HasForeignKey("CategoryId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShopIndie.Models.Product", "Product")
-                        .WithMany("ProductCategories")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("ShopIndie.Models.Product", null)
+                        .WithMany("ProductCategory")
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("ShopIndie.Models.ProductType", b =>
