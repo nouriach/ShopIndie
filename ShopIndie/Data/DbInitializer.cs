@@ -25,26 +25,30 @@ namespace ShopIndie.Data
                    Name="Hargraft - Wild Case",
                    Price= 86,
                    Description="lorum ipsum",
-                   ImageUrl = "https://placeholder.com/"               },
+                   ImageUrl = "https://placeholder.com/",
+                   ThemeID = 1               },
                new Product
                {
                    Name="Might Vibe Spotify Player",
                    Price= 80,
                    Description="lorum ipsum",
-                   ImageUrl = "https://placeholder.com/"               },
+                   ImageUrl = "https://placeholder.com/",
+                   ThemeID = 2               },
                new Product
                {
                    Name="Totebook (2 Pack)",
                    Price= 20,
                    Description="lorum ipsum",
                    ImageUrl = "https://placeholder.com/",
+                   ThemeID = 3
                },
                new Product
                {
                    Name="Oura Smart Ring",
                    Price= 314,
                    Description="lorum ipsum",
-                   ImageUrl = "https://placeholder.com/"
+                   ImageUrl = "https://placeholder.com/",
+                   ThemeID = 4
                },
                new Product
                {
@@ -52,6 +56,7 @@ namespace ShopIndie.Data
                    Price= 45,
                    Description="lorum ipsum",
                    ImageUrl = "https://placeholder.com/",
+                   ThemeID = 5
                }
             };
             foreach (Product p in products)
@@ -120,6 +125,35 @@ namespace ShopIndie.Data
             foreach (ProductCategory pc in productcategories)
             {
                 context.ProductCategories.Add(pc);
+            }
+            context.SaveChanges();
+
+            var producthemes = new Theme[]
+            {
+                new Theme
+                {
+                    ThemeName = ThemeName.Tech,
+                },
+                new Theme
+                {
+                    ThemeName = ThemeName.Audio,
+                },
+                new Theme
+                {
+                    ThemeName = ThemeName.Stationery,
+                },
+                new Theme
+                {
+                    ThemeName = ThemeName.Sleep,
+                },
+                new Theme
+                {
+                    ThemeName = ThemeName.Bottles,
+                },
+            };
+            foreach (Theme t in producthemes)
+            {
+                context.Themes.Add(t);
             }
             context.SaveChanges();
         }
