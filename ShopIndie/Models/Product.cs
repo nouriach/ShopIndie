@@ -20,6 +20,7 @@ namespace ShopIndie.Models
         public string ImageUrl { get; set; }
 
         // Foreign Key
+        public int ThemeID { get; set; }
 
         // Navigational Properties
         public Theme Theme { get; set; }

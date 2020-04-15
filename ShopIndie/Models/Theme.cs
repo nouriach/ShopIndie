@@ -24,14 +24,13 @@ namespace ShopIndie.Models
     public class Theme
     {
         // Primary Key
-        
+        public int ThemeID { get; set; }
+
         // Properties
         public ThemeName? ThemeName { get; set; }
         // Foreign Key
 
         // Navigational Properties
-        [Key]
-        public int ProductID { get; set; }
-        public Product Product { get; set; }
+        public ICollection<Product> Product { get; set; }
     }
 }
